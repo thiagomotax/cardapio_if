@@ -66,21 +66,24 @@ document.addEventListener('DOMContentLoaded', function () {
 $(document).ready(function(){
     $('#btnCadCardapio').click(function(){
       var dados = $('#formCadCardapio').serializeArray();
-
+      $body = $("body");
+      $body.addClass("loading");
       $.ajax({
         type:"POST",
         url:"../Controller/CardapioController.php",
         data:dados,
         success: function(result){
             if(result == 1){
-                alerta("glyphicon glyphicon-warning-sign", "Cardápio cadastrado com sucesso!", "success");
+                $body.removeClass("loading");
                 calendar.refetchEvents();
+                alerta("glyphicon glyphicon-warning-sign", "Cardápio cadastrado com sucesso!", "success");
                 $('#cadastrar').modal('hide'); 
                 $("#formCadCardapio")[0].reset();  
             }
             else{
-                alerta("glyphicon glyphicon-warning-sign", "Erro ao cadastrar cardápio!", "danger");
+                $body.removeClass("loading");
                 calendar.refetchEvents();
+                alerta("glyphicon glyphicon-warning-sign", "Erro ao cadastrar cardápio!", "danger");
                 $('#cadastrar').modal('hide');
                 $("#formCadCardapio")[0].reset();
             }
@@ -97,20 +100,24 @@ $(document).ready(function(){
   $(document).ready(function(){
     $('#btnEditCardapio').click(function(){
       var dados = $('#formEditCardapio').serializeArray();
+      $body = $("body");
+      $body.addClass("loading");
       $.ajax({
         type:"POST",
         url:"../Controller/CardapioController.php",
         data:dados,
         success: function(result){
           if(result == 1){
+            $body.removeClass("loading");
+            calendar.refetchEvents();
             alerta("glyphicon glyphicon-warning-sign", "Cardápio atualizado com sucesso!", "success");
-                calendar.refetchEvents();
-                $('#visualizar').modal('hide'); 
-                $("#formEditCardapio")[0].reset();  
+            $('#visualizar').modal('hide'); 
+            $("#formEditCardapio")[0].reset();  
             
           }else{
-            alerta("glyphicon glyphicon-warning-sign", "Erro ao atualizar cardápio!", "danger");
+            $body.removeClass("loading");
             calendar.refetchEvents();
+            alerta("glyphicon glyphicon-warning-sign", "Erro ao atualizar cardápio!", "danger");
             $('#visualizar').modal('hide');
             $("#formEditCardapio")[0].reset();
           }
@@ -122,7 +129,8 @@ $(document).ready(function(){
 
 
   $(document).ready(function() {
-    $('#btnDeleteCardapio').click(function() {
+    $('#btnDeleteCardapio').click(function(e) {
+      e.preventDefault();
         idx = ($('#idE').val());
         Swal.fire({
           title: 'Tem certeza?',
@@ -133,9 +141,12 @@ $(document).ready(function(){
           cancelButtonText: 'Cancelar',
           cancelButtonColor: '#d33',
           confirmButtonText: 'Sim, deletar!',
+          allowOutsideClick: false
             })
             .then((deletex) => {
-                if (deletex) {
+                if (deletex.value) {
+                  $body = $("body");
+                  $body.addClass("loading");
                     $.ajax({
                         type: "POST",
                         url: "../Controller/CardapioController.php",
@@ -145,21 +156,21 @@ $(document).ready(function(){
                         },
                         success: function(result) {
                             if (result == 1) {
-                                alerta("glyphicon glyphicon-warning-sign", "Cardápio excluído com sucesso!", "success");
+                                $body.removeClass("loading");
                                 calendar.refetchEvents();
+                                alerta("glyphicon glyphicon-warning-sign", "Cardápio excluído com sucesso!", "success");
                                 $('#visualizar').modal('hide'); 
                             } else {
-                              alerta("glyphicon glyphicon-warning-sign", "Erro ao excluir o cardápio!", "danger");
+                              $body.removeClass("loading");
                               calendar.refetchEvents();
+                              alerta("glyphicon glyphicon-warning-sign", "Erro ao excluir o cardápio!", "danger");
                               $('#visualizar').modal('hide');
 
                             }
                         }
                     });
                 }
-                else{
-                    swal.close();
-                }
+                
             });
     });
 });

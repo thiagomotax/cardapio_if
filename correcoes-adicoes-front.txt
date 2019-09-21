@@ -1,0 +1,5 @@
+no link das páginas colocar pra ir pra href específica(id específico: início, cardápio, informações)
+
+o dropdown fica "por baixo" dos elementos em mobile/desktop
+
+a organização das divs de informações ficam um pouco embaralhadas

@@ -262,7 +262,7 @@
 								<h6 class="font-weight-light">Almoço</h6>
 							</div>
 							<div class="col col-lg-6">
-								<h6 class="font-weight-light">11h00 -13h00 (segunda a sábado)</h6>
+								<h6 class="font-weight-light">11h00 -12h30 (segunda a sábado)</h6>
 							</div>
 						</div>
 						<div class="row">

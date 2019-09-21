@@ -17,6 +17,30 @@
 
     <!-- CSS Customizado -->
     <link rel="stylesheet" href="../Assets/css/custom.css">
+<style>
+    .fuck {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba(255, 255, 255, .8) url('../assets/loading.gif') 50% 50% no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading .fuck {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .fuck{
+    display: block;
+}
+</style>
 </head>
 
 <body>
@@ -272,6 +296,8 @@
         </div>
     </div>
     </div>
+    <div class="fuck"><!-- Place at bottom of page --></div>
+
     <!-- JQuery Ajax JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Popper.JS -->
