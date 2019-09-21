@@ -120,44 +120,19 @@ $(document).ready(function(){
     });
   });
 
-  $(document).ready(function(){
-    $('#btnEditCardapio').click(function(){
-      var dados = $('#formEditCardapio').serializeArray();
-      $.ajax({
-        type:"POST",
-        url:"../Controller/CardapioController.php",
-        data:dados,
-        success: function(result){
-          if(result == 1){
-            alerta("glyphicon glyphicon-warning-sign", "Cardápio atualizado com sucesso!", "success");
-            calendar.refetchEvents();
-            $('#visualizar').modal('hide'); 
-            $("#formEditCardapio")[0].reset();  
-            
-          }else{
-            alerta("glyphicon glyphicon-warning-sign", "Erro ao atualizar cardápio!", "danger");
-            calendar.refetchEvents();
-            $('#visualizar').modal('hide');
-            $("#formEditCardapio")[0].reset();
-          }
-        }
-      });
-      return false;
-    });
-  });
 
   $(document).ready(function() {
     $('#btnDeleteCardapio').click(function() {
         idx = ($('#idE').val());
-        swal({
-                title: '',
-                text: "Deseja realmente excluir o cardápio ?",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Sim, excluir!",
-                cancelButtonText: 'Não, cancelar!',
-                closeOnConfirm: true
+        Swal.fire({
+          title: 'Tem certeza?',
+          text: "Você não conseguirá reaver este cardápio depois!",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonText: 'Cancelar',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Sim, deletar!',
             })
             .then((deletex) => {
                 if (deletex) {
@@ -174,7 +149,9 @@ $(document).ready(function(){
                                 calendar.refetchEvents();
                                 $('#visualizar').modal('hide'); 
                             } else {
-                                alert("n excluiu");
+                              alerta("glyphicon glyphicon-warning-sign", "Erro ao excluir o cardápio!", "danger");
+                              calendar.refetchEvents();
+                              $('#visualizar').modal('hide');
 
                             }
                         }

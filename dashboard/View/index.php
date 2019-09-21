@@ -279,9 +279,6 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <!-- SweetAlert JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
-        integrity="sha256-KsRuvuRtUVvobe66OFtOQfjP8WA2SzYsmm4VPfMnxms=" crossorigin="anonymous"></script>
-
     <!-- FullCalendar JS -->
     <script src='../Assets/js/core/main.min.js'></script>
     <script src='../Assets/js/interaction/main.min.js'></script>
@@ -292,6 +289,7 @@
     <!-- Notify JS -->
     <script src="../Assets/js/bootstrap-notify.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
 
     <!-- Font Awesome JS -->
