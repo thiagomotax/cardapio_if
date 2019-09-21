@@ -41,36 +41,44 @@
         $dao->add($Cardapio);   
     }
 
-    function updateUsuario() {
-        require_once ('../model/Usuarios.php');
-        require_once ('../dao/UsuariosDAO.php');
-        require_once ('../BancoDeDados/database.php');
-        include "Util.php";
+    function update() {
+        require_once ('../Model/ModelCardapio.php');
+        require_once ('../Dao/DaoCardapio.php');
+        require_once ('../bd/database.php');
         $db = new Database();
-        $dao = new UsuariosDAO($db);
-        $id = $_POST['codUsuario'];
-        $nome = $_POST['nome'];
-        $cpf = soNumero($_POST['cpf']);
-        $email = $_POST['email'];
-        $nivel = $_POST['nivel'];
-        $Usuarios = new Usuarios();
-        $Usuarios->setId($id);
-        $Usuarios->setNome($nome);
-        $Usuarios->setCPF($cpf);
-        $Usuarios->setEmail($email);
-        $Usuarios->setNivel($nivel);
-        $dao->update($Usuarios);
+        $dao = new DaoCardapio($db);
+        $id = $_POST['idE'];
+        $principal = $_POST['principalE'];
+        $guarnicao = $_POST['guarnicaoE'];
+        $acompanhamento = $_POST['acompanhamentoE'];
+        $salada = $_POST['saladaE'];
+        $bebida = $_POST['bebidaE'];
+        $sobremesa = $_POST['sobremesaE'];
+        $tipo = $_POST['tipoE'];
+        // $data = $_POST['datax'];
+
+        $Cardapio = new ModelCardapio();
+        $Cardapio->setId($id);
+        $Cardapio->setPrincipal($principal);
+        $Cardapio->setGuarnicao($guarnicao);
+        $Cardapio->setAcompanhamento($acompanhamento);
+        $Cardapio->setSalada($salada);
+        $Cardapio->setBebida($bebida);
+        $Cardapio->setSobremesa($sobremesa);
+        $Cardapio->setTipo($tipo);
+        // $Cardapio->setData($data);
+        $dao->update($Cardapio);   
     }
 
-    function deleteUsuario() {
-        require_once ('../model/Usuarios.php');
-        require_once ('../dao/UsuariosDAO.php');
-        require_once ('../BancoDeDados/database.php');
+    function delete() {
+        require_once ('../Model/ModelCardapio.php');
+        require_once ('../Dao/DaoCardapio.php');
+        require_once ('../bd/database.php');
         $db = new Database();
-        $dao = new UsuariosDAO($db);
-        $id = $_POST['codUsuario'];
-        $Usuarios = new Usuarios();
-        $Usuarios->setId($id);
-        $dao->delete($Usuarios);
+        $dao = new DaoCardapio($db);
+        $id = $_POST['id'];
+        $Cardapio = new ModelCardapio();
+        $Cardapio->setId($id);
+        $dao->delete($Cardapio);
     }
 ?>

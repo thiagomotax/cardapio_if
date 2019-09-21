@@ -115,6 +115,7 @@
                 <div class="modal-body">
                     <form id="formEditCardapio" method="POST">
                         <input type="hidden" id="dataxd" name="dataxd">
+                        <input type="hidden" id="idE" name="idE">
                         <input type="hidden" value="editar" name="acao">
 
                         <div class="form-group row">
@@ -156,16 +157,16 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Salada</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" placeholder="Digite a salada..."
-                                    name="saladaE" id="saladaE">
+                                <input type="text" class="form-control" placeholder="Digite a salada..." name="saladaE"
+                                    id="saladaE">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Bebida</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" placeholder="Digite a bebida..."
-                                    name="bebidaE" id="bebidaE">
+                                <input type="text" class="form-control" placeholder="Digite a bebida..." name="bebidaE"
+                                    id="bebidaE">
                             </div>
                         </div>
 
@@ -176,13 +177,13 @@
                                     name="sobremesaE" id="sobremesaE">
                             </div>
                         </div>
-
+                        <div class="modal-footer">
+                            <input class="btn btn-info" id="btnEditCardapio" type="button" value="Editar">
+                            <input class="btn btn-danger" id="btnDeleteCardapio" type="button" value="Deletar">
+                        </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <input class="btn btn-info" type="button" value="Editar">
-                    <input class="btn btn-danger" type="button" value="Deletar">
-                </div>
+
             </div>
         </div>
     </div>

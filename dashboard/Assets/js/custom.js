@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             $("#tituloE").text("Visualizar cardápio do dia " + dia + "/" + mes + "/" + ano);
 
+            id = info.event.id;
+            $("#idE").val(id);
+
             principal = info.event.extendedProps.principal;
             $("#principalE").val(principal);
 
@@ -75,16 +78,118 @@ $(document).ready(function(){
                 $('#cadastrar').modal('hide'); 
                 $("#formCadCardapio")[0].reset();  
             }
-            else
+            else{
                 alerta("glyphicon glyphicon-warning-sign", "Erro ao cadastrar cardápio!", "danger");
                 calendar.refetchEvents();
                 $('#cadastrar').modal('hide');
                 $("#formCadCardapio")[0].reset();
+            }
         }
       });
       return false;
     });
   });
+
+
+
+
+
+  $(document).ready(function(){
+    $('#btnEditCardapio').click(function(){
+      var dados = $('#formEditCardapio').serializeArray();
+      $.ajax({
+        type:"POST",
+        url:"../Controller/CardapioController.php",
+        data:dados,
+        success: function(result){
+          if(result == 1){
+            alerta("glyphicon glyphicon-warning-sign", "Cardápio atualizado com sucesso!", "success");
+                calendar.refetchEvents();
+                $('#visualizar').modal('hide'); 
+                $("#formEditCardapio")[0].reset();  
+            
+          }else{
+            alerta("glyphicon glyphicon-warning-sign", "Erro ao atualizar cardápio!", "danger");
+            calendar.refetchEvents();
+            $('#visualizar').modal('hide');
+            $("#formEditCardapio")[0].reset();
+          }
+        }
+      });
+      return false;
+    });
+  });
+
+  $(document).ready(function(){
+    $('#btnEditCardapio').click(function(){
+      var dados = $('#formEditCardapio').serializeArray();
+      $.ajax({
+        type:"POST",
+        url:"../Controller/CardapioController.php",
+        data:dados,
+        success: function(result){
+          if(result == 1){
+            alerta("glyphicon glyphicon-warning-sign", "Cardápio atualizado com sucesso!", "success");
+            calendar.refetchEvents();
+            $('#visualizar').modal('hide'); 
+            $("#formEditCardapio")[0].reset();  
+            
+          }else{
+            alerta("glyphicon glyphicon-warning-sign", "Erro ao atualizar cardápio!", "danger");
+            calendar.refetchEvents();
+            $('#visualizar').modal('hide');
+            $("#formEditCardapio")[0].reset();
+          }
+        }
+      });
+      return false;
+    });
+  });
+
+  $(document).ready(function() {
+    $('#btnDeleteCardapio').click(function() {
+        idx = ($('#idE').val());
+        swal({
+                title: '',
+                text: "Deseja realmente excluir o cardápio ?",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sim, excluir!",
+                cancelButtonText: 'Não, cancelar!',
+                closeOnConfirm: true
+            })
+            .then((deletex) => {
+                if (deletex) {
+                    $.ajax({
+                        type: "POST",
+                        url: "../Controller/CardapioController.php",
+                        data: {
+                            acao: "excluir",
+                            id: idx
+                        },
+                        success: function(result) {
+                            if (result == 1) {
+                                alerta("glyphicon glyphicon-warning-sign", "Cardápio excluído com sucesso!", "success");
+                                calendar.refetchEvents();
+                                $('#visualizar').modal('hide'); 
+                            } else {
+                                alert("n excluiu");
+
+                            }
+                        }
+                    });
+                }
+                else{
+                    swal.close();
+                }
+            });
+    });
+});
+  
+
+
+
 
   function alerta(icon, message, type){
     $.notify({
