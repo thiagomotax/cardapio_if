@@ -1,0 +1,3 @@
+Requisitos sistema de cardápio:
+-interface amigável (e bonita)
+-gerar pdf ao final do cadastro(tentar fazer 2 por folha[repetir])
