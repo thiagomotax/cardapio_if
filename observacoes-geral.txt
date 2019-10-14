@@ -1,3 +1,4 @@
 adicionar horário de atendimento de vendas
 qr code colado na parede do refeitório com link pro site
 botão pra adicionar na area de trabalho(mobile/desk)
+na hr q adicionar o cardapio, gera o pdf

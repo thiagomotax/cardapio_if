@@ -70,7 +70,7 @@ body.loading .fuck{
                 <li class="active mt-4">
                     <a href="#"><i class="fas fa-home"></i> Inicio</a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i
                             class="fas fa-images"></i> Item</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
@@ -84,9 +84,9 @@ body.loading .fuck{
                             <a href="#">Item 3</a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
                 <li>
-                    <a href="#"><i class="fas fa-folder-open"></i> Item 2</a>
+                    <a href="mailto:someone@example.com?Subject=Hello%20again" target="_top"><i class="fas fa-bug"></i> Reportar erro</a>
                 </li>
             </ul>
         </nav>
@@ -106,7 +106,7 @@ body.loading .fuck{
                         <i class="fas fa-align-justify"></i>
                     </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
                                 <a class="nav-link" href="#">Item</a>
@@ -115,7 +115,7 @@ body.loading .fuck{
                                 <a class="nav-link" href="#">Item 2</a>
                             </li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
             </nav>
 
